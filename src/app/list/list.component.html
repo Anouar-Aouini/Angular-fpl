@@ -1,0 +1,11 @@
+<div class="cards">
+  <h1 *ngIf="!users?.length && search.length==0">There is no users yet!</h1>
+    <h1 *ngIf="!users?.length && search.length>0">There is no matching users</h1>
+  <mat-card  class="example-card my-4 mx-4" *ngFor="let user of users" >
+  <mat-card-title>{{user.firstName}}</mat-card-title>
+  <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">APPROVE</button>
+  </mat-card-actions>
+</mat-card>
+</div>

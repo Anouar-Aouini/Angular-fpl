@@ -1,0 +1,30 @@
+<div class="container">
+<div class="alert alert-success" role="alert" *ngIf="successMessage.showSuccess">
+  {{successMessage.msg}}
+</div>
+<h1 style="text-align: center;">Add Category</h1>
+<mat-card>
+  <form (submit)="addTag(categoryForm)" #categoryForm="ngForm">
+  <mat-form-field>
+         <textarea matInput
+           name="categoryName"
+           ngModel
+           required
+           minlength="3"
+           placeholder="Enter category name"
+           #categoryName="ngModel"
+         ></textarea>
+         <mat-error *ngIf="categoryName.invalid && categoryName.touched">
+           <mat-error *ngIf="categoryName.errors?.required">Category name is required</mat-error>
+           <mat-error *ngIf="categoryName.errors?.minlength">Category name must contain 3 characters at least</mat-error>
+         </mat-error>
+  </mat-form-field>
+<button
+mat-raised-button
+color="accent"
+type="submit"
+[disabled]="categoryForm.invalid"
+>Save</button>
+</form>
+</mat-card>
+</div>

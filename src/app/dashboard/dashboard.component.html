@@ -1,0 +1,104 @@
+<div class="alert alert-success" role="alert" *ngIf="successMessage.showSuccess">
+  {{successMessage.msg}}
+</div>
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3"><img [src]="imgURL+(idUser! + 5)" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                      <a class="btn btn-outline-dark btn-sm btn-block" (click)="open(content)">Edit profile</a>
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{user?.firstName}} {{user?.lastName}}</h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>{{user?.email}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{myCategories}}</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>categories</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{myBooks}}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>books</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="modal-body">
+                        <form #profileUpdateForm="ngForm" novalidate (ngSubmit)="onSubmitUpdate()">
+                          <div class="form-group">
+                          <label class="form-control-label text-muted">First name :</label>
+                          <input
+                          [(ngModel)]="profileModal.firstName"
+                          #firstName="ngModel"
+                          [class.is-invalid]="firstName.invalid && firstName.touched"
+                          type="text"
+                          class="form-control"
+                          name="firstName"
+                          minlength="3"
+                          required>
+                          <small class="text-danger"
+                          [class.d-none]="!firstName.errors?.required || firstName.untouched"
+                          >First name is required</small>
+                          <small class="text-danger"
+                          [class.d-none]="!firstName.errors?.minlength || firstName.untouched"
+                          >First name must be at least 3 charachters long</small>
+                          </div>
+                          <div class="form-group">
+                          <label class="form-control-label text-muted">Last name :</label>
+                          <input
+                          [(ngModel)]="profileModal.lastName"
+                          #lastName="ngModel"
+                          [class.is-invalid]="lastName.invalid && lastName.touched"
+                          type="text"
+                          class="form-control"
+                          name="lastName"
+                          minlength="6"
+                          required>
+                          <small class="text-danger"
+                          [class.d-none]="!lastName.errors?.required || lastName.untouched"
+                          >Last name is required</small>
+                          <small class="text-danger"
+                          [class.d-none]="!lastName.errors?.minlength || lastName.untouched"
+                          >Last name must be at least 6 charachters long</small>
+                          </div>
+                          <div class="form-group">
+                          <label class="form-control-label text-muted">Password :</label>
+                          <input
+                          [(ngModel)]="profileModal.password"
+                          #password="ngModel"
+                          [class.is-invalid]="password.invalid && password.touched"
+                          type="text"
+                          class="form-control"
+                          name="password"
+                          minlength="6"
+                          >
+                          <small class="text-danger"
+                          [class.d-none]="!password.errors?.required || password.untouched"
+                          >Password is required</small>
+                          <small class="text-danger"
+                          [class.d-none]="!password.errors?.minlength || password.untouched"
+                          >Password must be at least 6 charachters long</small>
+                          </div>
+                          <div class="row justify-content-center my-3 px-3">
+                          <button class="btn btn-success" (click)="modal.close('Save click')" type="submit" [disabled]="profileUpdateForm.invalid" >Save</button>
+                          </div>
+                        </form>
+</div>
+</ng-template>
+
+<!-- <pre>{{ closeResult }}</pre> -->

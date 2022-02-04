@@ -1,0 +1,7 @@
+.example-card {
+  width: 320px;
+}
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+}

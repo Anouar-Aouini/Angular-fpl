@@ -1,0 +1,18 @@
+  <div class="container">
+  <h1 *ngIf="books?.length==0">There is no books yet!</h1>
+  <div class="card" *ngFor="let book of books,let i=index" >
+    <div class="card__body">
+      <h4>{{book.title}}</h4>
+      <p>{{book.description}}</p>
+    </div>
+    <div class="card__footer" (click)="showDetails(book)">
+      <div class="user">
+        <img [src]="imgURL+(book.user.id+5)" alt="user__image" class="user__image">
+        <div class="user__info">
+          <h5>{{book.author}}</h5>
+          <small>{{duration(book.createdAt)}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

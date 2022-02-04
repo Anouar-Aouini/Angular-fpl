@@ -1,0 +1,19 @@
+<h1 *ngIf="books?.length==0" >There is no posts yet!</h1>
+<div class="container">
+  <div class="card" *ngFor="let post of books,let i=index">
+    <div class="card__body">
+      <span class="tag tag-blue">{{post.id}}</span>
+      <h4>{{post.title}}</h4>
+      <p>{{post.description}}</p>
+    </div>
+    <div class="card__footer">
+      <div class="user">
+        <img [src]="imgURL+(+post.user.id+5)" alt="user__image" class="user__image">
+        <div class="user__info">
+          <h5>{{post.user.firstName}}</h5>
+          <small>{{duration(post.createdAt)}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
