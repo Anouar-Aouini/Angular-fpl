@@ -51,19 +51,14 @@
         </mat-form-field>
                             <div class="form-group">
                             <input class="form-control" type="file"
-                             ngModel
-                                #pictureurl="ngModel"
-                                name="pictureurl"
-                                class="form-control"
-                                [class.is-invalid]="pictureurl.invalid && pictureurl.touched"
-                                placeholder="Location"
-                            (change)="onChange($event)">
+                                required
+                                (change)="onChange($event)">
                             </div>
 <button
 mat-raised-button
 color="accent"
 type="submit"
-[disabled]="bookForm.invalid"
+[disabled]="bookForm.invalid && file?.name"
 >Save</button>
 </form>
 </mat-card>

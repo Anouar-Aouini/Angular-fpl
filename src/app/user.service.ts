@@ -12,7 +12,8 @@ export class UserService {
   login(user:{email:string,password:string}) {
     return this.http.post<{token:string,email:string}>(this.url + "/auth/login", user);
   }
-  register(user:any) {
+  register(user: any) {
+    console.log(user);
     return this.http.post(this.url + "/auth/register", user);
   }
     activeUser() {
@@ -45,11 +46,14 @@ export class UserService {
   }
   getRoles() {
 
-    return this.http.get("http://localhost:8000/api/v1/roles/")
+    return this.http.get(this.url+"/roles/")
   }
   updateUser(user:{firstName:string,lastName:string,password:string},id:number):Observable<{user:User}> {
 
-    return this.http.put<{message:string,user:User}>("http://localhost:8000/api/v1/users/"+id,user)
+    return this.http.put<{message:string,user:User}>(this.url+"/users/"+id,user)
+  }
+  approveSubscription(id: number) {
+    return this.http.put(this.url+"/users/approve/"+id,"")
   }
 
 }

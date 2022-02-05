@@ -19,29 +19,29 @@ export class BookDetailsComponent implements OnInit {
   public commentForm!: FormGroup;
   public param: { id: number }={ id: 0 };
   public book?: Book;
+  public user?: User;
   public id: string = "";
   public imgURL: string = "https://i.pravatar.cc/40?img=";
   public comments: any;
   public users?: User[];
   public activeUser?: User;
   constructor(private modalService: NgbModal,
-  private fb: FormBuilder,
   public route: ActivatedRoute,
   public bookService: BookService,
   public userService : UserService) { }
 
   ngOnInit(): void {
-        this.commentForm = this.fb.group({
-      text: ["", [Validators.required]],
-      });
           this.param = {
           id: this.route.snapshot.params["id"],
           }
     this.bookService.getBooks().subscribe(data => {
       this.book = data.filter(el => el.id == this.param?.id)[0];
-      this.updatedBook = { title: this.book.title, description: this.book.description };
+      console.log(this.book);
     })
-    this.userService.activeUser().subscribe(data => this.id = data.id + "");
+    this.userService.activeUser().subscribe(data => {
+      this.user = data;
+      this.id = data.id + "";
+    });
   }
   userName(comment:any) {
     let firstName = this.users?.filter(el => el.id == + comment.user_id)[0].firstName;
@@ -95,6 +95,18 @@ export class BookDetailsComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  downloadPdf(fileName:string) {
+    const source = this.book!.content;
+    const link = document.createElement("a");
+    link.href = source;
+    link.download = `${fileName}.pdf`
+    link.click();
+  }
+  onClickDownloadPdf(){
+    let base64String = "your-base64-string";
+    this.downloadPdf("sample");
   }
 
 }

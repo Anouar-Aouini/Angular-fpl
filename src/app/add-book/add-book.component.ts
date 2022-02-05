@@ -19,7 +19,7 @@ export class AddBookComponent implements OnInit {
       }
   }
   async addBook(bookForm: NgForm) {
-    let pdf = await this.convertImage();
+    let pdf = await this.convertPDF();
     let book = bookForm.value;
     book.content = pdf;
     this.bookservice.addBook(this.param.id, book).subscribe(()=>{
@@ -29,10 +29,11 @@ export class AddBookComponent implements OnInit {
     bookForm.resetForm();
   }
   public file: File | null = null;
-  onChange(event:any) {
+  onChange(event: any) {
     this.file = event.target.files[0];
+    console.log(this.file);
   }
-  convertImage() : Promise<string> {
+  convertPDF() : Promise<string> {
     return new Promise((resolve, reject) => {
       var fileReader = new FileReader();
       fileReader.onload = function (fileLoadedEvent) {
