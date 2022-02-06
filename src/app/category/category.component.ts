@@ -21,7 +21,6 @@ public successMessage = {msg:"",showSuccess:false};
 
 
     this.categoryService.getCategories().subscribe(data => {
-      console.log(data);
       this.categories = data;
     })
     this.userService.activeUser().subscribe(data=> {

@@ -29,7 +29,6 @@ export class BookByCategoryComponent implements OnInit {
       id: this.route.snapshot.params["id"],
       }
     this.categoryService.getCategoryById(this.param.id).subscribe(data => {
-      console.log(data);
       this.books = data.books;
     })
    // this.userService.getRoles().subscribe(data=>console.log(data))

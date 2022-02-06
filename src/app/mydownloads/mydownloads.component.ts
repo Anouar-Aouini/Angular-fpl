@@ -19,7 +19,6 @@ export class MydownloadsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.getMyDownloadedBooks().subscribe(data => {
-      console.log(data);
       this.books = data;
     })
     this.userService.activeUser().subscribe(data => this.user = data);

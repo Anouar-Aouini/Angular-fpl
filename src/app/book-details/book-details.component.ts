@@ -38,7 +38,6 @@ export class BookDetailsComponent implements OnInit {
           }
     this.bookService.getBooks().subscribe(data => {
       this.book = data.filter(el => el.id == this.param?.id)[0];
-      console.log(this.book);
     })
     this.userService.activeUser().subscribe(data => {
       this.user = data;
@@ -79,9 +78,8 @@ export class BookDetailsComponent implements OnInit {
   }
   onClickDownloadPdf(bookId:number) {
     this.downloadService.downloadBook(bookId).subscribe(data => {
-    console.log(data);
   })
-    //this.downloadPdf("sample");
+    this.downloadPdf("sample");
   }
 
 }

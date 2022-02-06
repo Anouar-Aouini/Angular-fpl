@@ -18,7 +18,6 @@ export class BooklistComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe(data => {
-      console.log(data);
       this.books = data;
     })
     this.userService.activeUser().subscribe(data => this.user = data);

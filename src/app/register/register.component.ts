@@ -51,7 +51,6 @@ export class RegisterComponent implements OnInit {
   lastName: this.registerForm.value.lastName,
   password: this.registerForm.value.password
     }
-    console.log(user);
     this.userService.register(user).subscribe(() => {
       this.successMessage = { msg :"User registered successfully!", showSuccess: true }
       setTimeout(() => this.successMessage={ msg:"", showSuccess: false }, 3000)

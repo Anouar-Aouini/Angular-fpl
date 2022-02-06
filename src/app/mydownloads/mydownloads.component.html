@@ -2,7 +2,7 @@
   <h1 *ngIf="books?.length==0">There is no downloaded books yet!</h1>
   <div class="card" *ngFor="let book of books,let i=index" >
     <div class="card__body">
-      <h4>{{book.title}}</h4>
+      <h4>Title : {{book.title}}</h4>
       <p>{{book.description}}</p>
     </div>
     <div class="card__footer" (click)="showDetails(book)">

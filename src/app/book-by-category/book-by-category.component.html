@@ -2,8 +2,7 @@
 <div class="container">
   <div class="card" *ngFor="let post of books,let i=index">
     <div class="card__body">
-      <span class="tag tag-blue">{{post.id}}</span>
-      <h4>{{post.title}}</h4>
+      <h4>Title : {{post.title}}</h4>
       <p>{{post.description}}</p>
     </div>
     <div class="card__footer">
