@@ -32,7 +32,6 @@ public successMessage = {msg:"",showSuccess:false};
     this.router.navigate([category.categoryName,{id:category.id}],{relativeTo:this.route});
   }
   addPost(category: any) {
-    console.log(category);
      this.router.navigate(["addbook",category.categoryName,{id:category.id}],{relativeTo:this.route})
   }
   addTag() {
