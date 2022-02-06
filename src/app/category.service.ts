@@ -14,8 +14,8 @@ export class CategorySrervice {
     getCategoryById(id:number) {
     return this.http.get<any>(this.url+"/category/"+id)
     }
-    addCategory(tag:{categoryName:string,user_id:number}) {
-    return this.http.post(this.url+"/category/",tag)
+    addCategory(category:{categoryName:string,user_id:number}) {
+    return this.http.post(this.url+"/category/",category)
     }
     deleteCategory(id:number) {
     return this.http.delete(this.url+"/category/"+id)

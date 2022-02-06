@@ -20,6 +20,12 @@
         <i class="fa fa-users" aria-hidden="true"></i> User List
       </a>
     </li>
+    <li>
+      <a
+      *ngIf="user?.roles[0].name=='USER'"  routerLink="/auth/mydownloads" routerLinkActive="active">
+        <i class="fa fa-users" aria-hidden="true"></i> My downloads
+      </a>
+    </li>
         <!-- <li>
       <a routerLink="/addposition" routerLinkActive="active">
         <i class="fa fa-users" aria-hidden="true"></i> Add Position

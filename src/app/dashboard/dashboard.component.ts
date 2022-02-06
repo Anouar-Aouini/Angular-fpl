@@ -66,5 +66,12 @@ export class DashboardComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  demandPermission() {
+    this.userService.demandPermission().subscribe(data => {
+      this.userService.activeUser().subscribe(data => {
+        this.user = data;
+      })
+    })
+  }
 
 }

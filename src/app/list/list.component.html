@@ -6,7 +6,7 @@
   <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
   <mat-card-actions>
     <button *ngIf="user.subscribed == 'true'"  class="btn btn-success">Subscribed</button>
-    <button *ngIf="!user.subscribed" mat-raised-button color="primary" (click)="approveSubscription(user.id)">APPROVE</button>
+    <button *ngIf="user.subscribed == 'false' && user.permission == 'true'" mat-raised-button color="primary" (click)="approveSubscription(user.id)">APPROVE</button>
   </mat-card-actions>
 </mat-card>
 </div>

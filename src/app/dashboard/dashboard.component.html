@@ -17,15 +17,24 @@
                 </div>
             </div>
             <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
+                <ul *ngIf="user?.roles[0].name=='ADMIN'" class="list-inline mb-0" >
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">{{myCategories}}</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>categories</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{myBooks}}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>books</small>
+                        <h5 class="font-weight-bold mb-0 d-block">{{myBooks}}</h5><small class="text-muted"> <i class="fas fa-book mr-1"></i>books</small>
+                    </li>
+                </ul>
+                <ul *ngIf="user?.roles[0].name=='USER'" class="list-inline mb-0" >
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{user?.downloadsNumber}}</h5><small class="text-muted"> <i class="fas fa-book mr-1"></i>downloaded books</small>
                     </li>
                 </ul>
             </div>
+          <button *ngIf="user?.permission=='false'" (click)="demandPermission()" class="btn btn-primary center">
+            Demand subscription</button>
+            <h3 *ngIf="user?.permission=='true' && user?.subscribed=='true'" class="subscribed">Subscribed</h3>
+          <h4 *ngIf="user?.permission=='true' && user?.subscribed=='false'" class="pending">Waiting for subscription approval ...</h4>
         </div>
     </div>
 </div>

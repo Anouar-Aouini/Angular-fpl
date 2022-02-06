@@ -58,7 +58,7 @@
 mat-raised-button
 color="accent"
 type="submit"
-[disabled]="bookForm.invalid && file?.name"
+[disabled]="bookForm.invalid && !file?.name"
 >Save</button>
 </form>
 </mat-card>

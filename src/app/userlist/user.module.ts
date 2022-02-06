@@ -5,6 +5,8 @@ export class User{
     public lastName: string,
     public email: string,
     public password: string,
+    public downloadsNumber: number,
+    public permission: string,
     public subscribed: string,
     public account: { id: number, password: string },
     public position: { p_id: number, p_name: string },

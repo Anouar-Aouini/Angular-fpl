@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { BookService } from '../book.service';
 import { Book } from '../booklist/post.module';
+import { DownloadService } from '../download.service';
 import { UserService } from '../user.service';
 import { User } from '../userlist/user.module';
-import { DownloadService } from './../download.service';
 
 @Component({
-  selector: 'app-book-details',
-  templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.css']
+  selector: 'app-mydownloadedbooks',
+  templateUrl: './mydownloadedbooks.component.html',
+  styleUrls: ['./mydownloadedbooks.component.css']
 })
-export class BookDetailsComponent implements OnInit {
+export class MydownloadedbooksComponent implements OnInit {
   public successMessage = { msg: "", showSuccess: false };
   public updatedBook: { title: string, description: string } = { title: "", description: "" };
   public closeResult = '';
@@ -77,10 +77,8 @@ export class BookDetailsComponent implements OnInit {
     link.download = `${fileName}.pdf`
     link.click();
   }
-  onClickDownloadPdf(bookId:number) {
-    this.downloadService.downloadBook(bookId).subscribe(data => {
-    console.log(data);
-  })
+  onClickDownloadPdf() {
+    console.log("ok");
     //this.downloadPdf("sample");
   }
 

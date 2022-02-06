@@ -22,6 +22,7 @@ export class AddCategoryComponent implements OnInit {
   addTag(categoryForm: NgForm) {
     let name = categoryForm.value;
     name.user_id = +this.param.id;
+    console.log(name);
     this.categoryService.addCategory(name).subscribe((data) => {
       this.successMessage = { msg :"Category successfully added!", showSuccess: true }
       setTimeout(() => this.successMessage={ msg:"", showSuccess: false }, 3000)

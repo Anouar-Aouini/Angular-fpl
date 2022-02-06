@@ -13,7 +13,7 @@
                 <div class="p-2">
                   <h2>{{book?.title}}</h2>
                     <p class="text-justify">{{book?.description}}</p>
-                     <button *ngIf="user?.roles[0].name=='ADMIN' || (user?.subscribed == 'true' && user!.downloadsNumber < 5)" class="btn btn-primary" (click)="onClickDownloadPdf(book!.id)">
+                     <button class="btn btn-primary" (click)="onClickDownloadPdf()">
                            Download PDF
                      </button>
                     <hr>

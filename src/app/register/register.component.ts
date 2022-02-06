@@ -49,11 +49,7 @@ export class RegisterComponent implements OnInit {
   email: this.registerForm.value.email,
   firstName: this.registerForm.value.firstName,
   lastName: this.registerForm.value.lastName,
-  password: this.registerForm.value.password,
-  subscribed: "false",
-  roles: [
-      this.role
-  ]
+  password: this.registerForm.value.password
     }
     console.log(user);
     this.userService.register(user).subscribe(() => {

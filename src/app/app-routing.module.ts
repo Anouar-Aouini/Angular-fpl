@@ -9,6 +9,8 @@ import { BooklistComponent } from './booklist/booklist.component';
 import { CategoryComponent } from './category/category.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { MydownloadedbooksComponent } from './mydownloadedbooks/mydownloadedbooks.component';
+import { MydownloadsComponent } from './mydownloads/mydownloads.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
@@ -21,6 +23,8 @@ const routes: Routes = [
   {
     path: 'auth', component: NavbarComponent,canActivate: [AuthGuard], children: [
   { path: "list", component: UserlistComponent },
+  { path: "mydownloads", component: MydownloadsComponent },
+  { path: "mydownloads/:id", component: MydownloadedbooksComponent },
   { path: "books", component: BooklistComponent },
   { path: "categories", component: CategoryComponent },
   { path: "dashboard", component: DashboardComponent },

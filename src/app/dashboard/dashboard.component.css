@@ -14,3 +14,14 @@ body {
     min-height: 100vh;
     overflow-x: hidden
 }
+.center{
+  margin: 2rem 8rem 2rem 8rem;
+}
+.pending{
+  color: #e96443;
+  padding-left: 2rem;
+}
+.subscribed{
+  color: #1042af;
+  padding: 1rem 10rem 1rem 10rem;
+}

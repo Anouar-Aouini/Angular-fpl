@@ -55,5 +55,8 @@ export class UserService {
   approveSubscription(id: number) {
     return this.http.put(this.url+"/users/approve/"+id,"")
   }
+  demandPermission() {
+    return this.http.put<{message:string}>(this.url + "/users/demand-subscription", "");
+  }
 
 }

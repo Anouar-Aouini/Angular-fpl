@@ -23,5 +23,9 @@ export class BookService {
     }
     getFilteredBook(search:string): Observable<Book[]>{
     return this.http.get<Book[]>(this.url+"/book/search-by-title/"+search)
-  }
+    }
+    getMyDownloadedBooks() {
+    return this.http.get<Book[]>(this.url+"/book/mydownloadedbooks")
+    }
 }
+

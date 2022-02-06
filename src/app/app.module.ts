@@ -26,6 +26,8 @@ import { BookByCategoryComponent } from './book-by-category/book-by-category.com
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { CategoryComponent } from './category/category.component';
+import { MydownloadsComponent } from './mydownloads/mydownloads.component';
+import { MydownloadedbooksComponent } from './mydownloadedbooks/mydownloadedbooks.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { CategoryComponent } from './category/category.component';
     BookByCategoryComponent,
     BookDetailsComponent,
     BooklistComponent,
-    CategoryComponent
+    CategoryComponent,
+    MydownloadsComponent,
+    MydownloadedbooksComponent
   ],
   imports: [
     BrowserModule,
