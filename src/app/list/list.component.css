@@ -5,3 +5,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+.spinner{
+  margin-top: 100px;
+  margin-left: 300px;
+}

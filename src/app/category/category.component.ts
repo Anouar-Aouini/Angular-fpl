@@ -13,15 +13,16 @@ export class CategoryComponent implements OnInit {
 
 public successMessage = {msg:"",showSuccess:false};
   public imgURL: string = "https://i.pravatar.cc/40?img=";
+  public showSpinner: boolean = false;
   public categories: any = [];
   public activeUser?: User;
   constructor(public categoryService : CategorySrervice,public route:ActivatedRoute,public router:Router,public userService : UserService) { }
 
   ngOnInit(): void {
-
-
+    this.showSpinner = true;
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data;
+      this.showSpinner = false;
     })
     this.userService.activeUser().subscribe(data=> {
       this.activeUser = data;
