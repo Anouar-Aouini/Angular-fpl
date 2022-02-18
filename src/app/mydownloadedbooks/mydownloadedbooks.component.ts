@@ -14,6 +14,7 @@ import { User } from '../userlist/user.module';
   styleUrls: ['./mydownloadedbooks.component.css']
 })
 export class MydownloadedbooksComponent implements OnInit {
+  public showSpinner: boolean = false;
   public successMessage = { msg: "", showSuccess: false };
   public updatedBook: { title: string, description: string } = { title: "", description: "" };
   public closeResult = '';
@@ -33,11 +34,13 @@ export class MydownloadedbooksComponent implements OnInit {
   public downloadService:DownloadService) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
           this.param = {
           id: this.route.snapshot.params["id"],
           }
     this.bookService.getBooks().subscribe(data => {
       this.book = data.filter(el => el.id == this.param?.id)[0];
+      this.showSpinner = false;
     })
     this.userService.activeUser().subscribe(data => {
       this.user = data;
@@ -76,8 +79,8 @@ export class MydownloadedbooksComponent implements OnInit {
     link.download = `${fileName}.pdf`
     link.click();
   }
-  onClickDownloadPdf() {
-    this.downloadPdf("sample");
+  onClickDownloadPdf(book:any) {
+    this.downloadPdf(book.title);
   }
 
 }

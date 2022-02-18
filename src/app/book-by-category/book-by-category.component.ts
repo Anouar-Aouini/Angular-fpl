@@ -11,6 +11,7 @@ import { User } from '../userlist/user.module';
   styleUrls: ['./book-by-category.component.css']
 })
 export class BookByCategoryComponent implements OnInit {
+  public showSpinner: boolean = false;
   public books?: Book[];
   public user?: User;
   public email?: String;
@@ -22,6 +23,7 @@ export class BookByCategoryComponent implements OnInit {
     public route: ActivatedRoute, public categoryService: CategorySrervice) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.date = new Date("milliseconds")
     this.userService.current().subscribe(data=>this.email=data.message)
     this.userService.getUsers().subscribe(data => this.user = data.filter((el)=>el.email===this.email)[0]);
@@ -30,6 +32,7 @@ export class BookByCategoryComponent implements OnInit {
       }
     this.categoryService.getCategoryById(this.param.id).subscribe(data => {
       this.books = data.books;
+      this.showSpinner = false;
     })
    // this.userService.getRoles().subscribe(data=>console.log(data))
     // this.userService.getPositions()
