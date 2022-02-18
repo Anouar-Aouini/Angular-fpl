@@ -7,7 +7,7 @@ import { User } from './userlist/user.module';
   providedIn: 'root'
 })
 export class UserService {
-  public url: string ="http://localhost:8080/api/v1";
+  public url: string ="http://localhost:9000/api/v1";
   constructor(public http: HttpClient) { }
   login(user:{email:string,password:string}) {
     return this.http.post<{token:string,email:string}>(this.url + "/auth/login", user);
