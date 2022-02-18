@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DownloadService {
-    public url: string ="http://localhost:8080/api/v1/download/";
+    public url: string ="http://localhost:9000/api/v1/download/";
 
   constructor(public http:HttpClient) { }
 

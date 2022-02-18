@@ -6,7 +6,7 @@ import { Category } from './category/category.module';
   providedIn: 'root'
 })
 export class CategorySrervice {
-  public url: string ="http://localhost:8080/api/v1";
+  public url: string ="http://localhost:9000/api/v1";
   constructor(public http: HttpClient) { }
     getCategories() {
     return this.http.get<Category[]>(this.url+"/category/")

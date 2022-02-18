@@ -76,10 +76,10 @@ export class BookDetailsComponent implements OnInit {
     link.download = `${fileName}.pdf`
     link.click();
   }
-  onClickDownloadPdf(bookId:number) {
-    this.downloadService.downloadBook(bookId).subscribe(data => {
+  onClickDownloadPdf(book:any) {
+    this.downloadService.downloadBook(book.id).subscribe(data => {
   })
-    this.downloadPdf("sample");
+    this.downloadPdf(book.title);
   }
 
 }
