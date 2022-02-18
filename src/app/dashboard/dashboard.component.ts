@@ -11,6 +11,7 @@ import { CategorySrervice } from '../category.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public showSpinner: boolean = false;
   public successMessage = {msg:"",showSuccess:false};
   public imgURL: string = "https://i.pravatar.cc/40?img=";
   constructor(public categoryService: CategorySrervice,
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
   public myBooks?: number;
   public myCategories?:number;
   ngOnInit(): void {
+    this.showSpinner = true;
     this.userService.activeUser().subscribe(data => {
       this.user = data;
       this.profileModal = {
@@ -39,7 +41,9 @@ export class DashboardComponent implements OnInit {
     this.bookService.getBooks().subscribe(data => {
     this.myBooks = data.filter(el => el.user.id == this.idUser).length;
     })
+     this.showSpinner = false;
     });
+
   }
   onSubmitUpdate() {
     this.userService.updateUser(this.profileModal, this.user!.id).subscribe(data => {

@@ -5,3 +5,6 @@
   display: flex;
   flex-wrap: wrap;
 }
+.spinner{
+  margin-top: 200px;
+}

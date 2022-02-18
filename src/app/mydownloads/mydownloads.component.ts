@@ -11,15 +11,17 @@ import { User } from '../userlist/user.module';
   styleUrls: ['./mydownloads.component.css']
 })
 export class MydownloadsComponent implements OnInit {
-
+  public showSpinner: boolean = false;
   public imgURL: string = "https://i.pravatar.cc/40?img=";
   public books?: Book[];
   public user?: User;
   constructor(public bookService:BookService,public userService:UserService,public route : ActivatedRoute, public router : Router) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.bookService.getMyDownloadedBooks().subscribe(data => {
       this.books = data;
+      this.showSpinner = false;
     })
     this.userService.activeUser().subscribe(data => this.user = data);
   }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,7 +63,8 @@ import { MydownloadedbooksComponent } from './mydownloadedbooks/mydownloadedbook
     MatRadioModule,
     MatButtonModule,
     MatInputModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

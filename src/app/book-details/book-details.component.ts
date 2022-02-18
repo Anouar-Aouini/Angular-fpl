@@ -14,6 +14,7 @@ import { DownloadService } from './../download.service';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
+  public showSpinner: boolean = false;
   public successMessage = { msg: "", showSuccess: false };
   public updatedBook: { title: string, description: string } = { title: "", description: "" };
   public closeResult = '';
@@ -33,11 +34,13 @@ export class BookDetailsComponent implements OnInit {
   public downloadService:DownloadService) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
           this.param = {
           id: this.route.snapshot.params["id"],
           }
     this.bookService.getBooks().subscribe(data => {
       this.book = data.filter(el => el.id == this.param?.id)[0];
+      this.showSpinner = false;
     })
     this.userService.activeUser().subscribe(data => {
       this.user = data;
@@ -77,8 +80,7 @@ export class BookDetailsComponent implements OnInit {
     link.click();
   }
   onClickDownloadPdf(book:any) {
-    this.downloadService.downloadBook(book.id).subscribe(data => {
-  })
+    this.downloadService.downloadBook(book.id).subscribe()
     this.downloadPdf(book.title);
   }
 
